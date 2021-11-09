@@ -13,14 +13,13 @@ redirect prompt command stdout,stderr to pywebview
 """
 
 import os
-import time
-import shutil
 import sys
-import ray
-import logging
-import logging.handlers
-import errno
 import webview
 
-window = webview.create_window('cpuwolf@gmail.com', 'pokerrandom/index.html')
+def resource_path(relative_path):  # needed for bundling
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+window = webview.create_window('cpuwolf@gmail.com', resource_path('index.html'))
 webview.start()

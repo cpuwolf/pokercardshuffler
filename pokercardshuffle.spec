@@ -6,7 +6,7 @@ block_cipher = None
 a = Analysis(['pokercardshuffle.py'],
              pathex=['/Users/apple/code/pyff777wingflexfix'],
              binaries=[],
-             datas=[('logo.ico','.'),('danger.ico','.')],
+             datas=[('pokerrandom/index.html','.'),('pokerrandom/script.js','.'),('pokerrandom/style.css','.'),('logo.ico','.'),('danger.ico','.')],
              hiddenimports=[],
              hookspath=['hooks3'],
              runtime_hooks=[],
@@ -26,7 +26,7 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           runtime_tmpdir=None,
-          console=True , icon='logo.ico')
+          console=False , icon='logo.ico')
 app = BUNDLE(exe,
              a.datas, 
              name='pokercardshuffle.app',
