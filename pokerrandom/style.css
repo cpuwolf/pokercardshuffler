@@ -1,0 +1,731 @@
+@charset "UTF-8";
+.board {
+  display: table;
+  border-spacing: 0;
+  margin: 1rem auto;
+  padding: 2rem;
+  user-select: none;
+}
+.board .board-row {
+  white-space: nowrap;
+  margin-bottom: 0.5rem;
+}
+.board .board-row:last-child {
+  margin-bottom: 0;
+}
+.board .hearts,
+.board .diamonds {
+  color: #d40000;
+}
+.board .card {
+  box-shadow: 1px 1px 6px #999;
+  margin-right: 0.5rem;
+  display: inline-block;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+  background: #fff;
+  background: -moz-linear-gradient(top, #fff, #ddd);
+  background: -webkit-gradient(linear, 0 0, 0% 100%, from(#fff), to(#eee));
+}
+.board .card:first-child {
+  margin-left: 0;
+}
+.board .card:last-child {
+  margin-right: 0;
+}
+.board .card.turned {
+  transform: rotateY(180deg);
+  box-shadow: -1px 1px 6px #999;
+}
+.board .card div, .board .card::after, .board .card::before {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-position: 50% 50%;
+  background-size: 100% 100%;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  background-repeat: no-repeat;
+  border-radius: 6px;
+}
+.board .card::after {
+  background-color: #fff;
+}
+.board .card div::before,
+.board .card div::after {
+  position: absolute;
+  font-size: 1.84rem;
+  text-align: center;
+  line-height: 1.9rem;
+  font-family: "Ubuntu Condensed", sans-serif;
+  white-space: pre-line;
+  width: 1.42rem;
+  letter-spacing: -0.12rem;
+  top: 0.2rem;
+  bottom: 0.12rem;
+}
+.board .card.card-big {
+  width: 7.65rem;
+  height: 11.6rem;
+  border-radius: 8px;
+}
+.board .card.card-big.spades::before {
+  content: "♠";
+}
+.board .card.card-big.hearts::before {
+  content: "♥";
+}
+.board .card.card-big.diamonds::before {
+  content: "♦";
+}
+.board .card.card-big.clubs::before {
+  content: "♣";
+}
+.board .card.card-big::before {
+  content: "8";
+  text-align: center;
+  font-size: 7.65rem;
+  line-height: 11.6rem;
+  opacity: 0.07;
+}
+.board .card.card-big div::after {
+  right: 0;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+}
+.board .card.card-small.spades div::after, .board .card.card-tiny.spades div::after {
+  content: "♠";
+}
+.board .card.card-small.hearts div::after, .board .card.card-tiny.hearts div::after {
+  content: "♥";
+}
+.board .card.card-small.diamonds div::after, .board .card.card-tiny.diamonds div::after {
+  content: "♦";
+}
+.board .card.card-small.clubs div::after, .board .card.card-tiny.clubs div::after {
+  content: "♣";
+}
+.board .card.card-small {
+  width: 3.825rem;
+  height: 5.8rem;
+  border-radius: 4px;
+}
+.board .card.card-small div::before {
+  width: 1rem;
+  top: 0.16rem;
+  font-size: 1rem;
+}
+.board .card.card-small div::after {
+  font-size: 1.6rem;
+  width: 95%;
+  line-height: 8.12rem;
+}
+.board .card.card-tiny {
+  width: 1.9125rem;
+  height: 2.9rem;
+  border-radius: 2px;
+}
+.board .card.card-tiny div::before {
+  width: 0.7rem;
+  top: -0.1rem;
+  left: -0.1rem;
+  font-size: 0.7rem;
+}
+.board .card.card-tiny div::after {
+  font-size: 0.7rem;
+  width: 95%;
+  line-height: 4.06rem;
+}
+.board .card::after {
+  content: "";
+  background-image: url("http://iconcept.bg/games/poker/img/deck/back.png");
+  top: 0;
+  left: 0;
+  display: block;
+  transform: rotateY(180deg);
+  box-sizing: border-box;
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
+.board-deck .card {
+  margin-left: -7.0615384615rem;
+  margin-right: 0;
+}
+
+.card-big.spades.rank1 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_1.svg");
+}
+
+.card-big.rank1 div::before,
+.card-big.rank1 div::after,
+.card-tiny.rank1 div::before,
+.card-small.rank1 div::before {
+  content: "A";
+}
+
+.card-big.spades.rank2 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_2.svg");
+}
+
+.card-big.rank2 div::before,
+.card-big.rank2 div::after,
+.card-tiny.rank2 div::before,
+.card-small.rank2 div::before {
+  content: "2";
+}
+
+.card-big.spades.rank3 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_3.svg");
+}
+
+.card-big.rank3 div::before,
+.card-big.rank3 div::after,
+.card-tiny.rank3 div::before,
+.card-small.rank3 div::before {
+  content: "3";
+}
+
+.card-big.spades.rank4 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_4.svg");
+}
+
+.card-big.rank4 div::before,
+.card-big.rank4 div::after,
+.card-tiny.rank4 div::before,
+.card-small.rank4 div::before {
+  content: "4";
+}
+
+.card-big.spades.rank5 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_5.svg");
+}
+
+.card-big.rank5 div::before,
+.card-big.rank5 div::after,
+.card-tiny.rank5 div::before,
+.card-small.rank5 div::before {
+  content: "5";
+}
+
+.card-big.spades.rank6 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_6.svg");
+}
+
+.card-big.rank6 div::before,
+.card-big.rank6 div::after,
+.card-tiny.rank6 div::before,
+.card-small.rank6 div::before {
+  content: "6";
+}
+
+.card-big.spades.rank7 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_7.svg");
+}
+
+.card-big.rank7 div::before,
+.card-big.rank7 div::after,
+.card-tiny.rank7 div::before,
+.card-small.rank7 div::before {
+  content: "7";
+}
+
+.card-big.spades.rank8 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_8.svg");
+}
+
+.card-big.rank8 div::before,
+.card-big.rank8 div::after,
+.card-tiny.rank8 div::before,
+.card-small.rank8 div::before {
+  content: "8";
+}
+
+.card-big.spades.rank9 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_9.svg");
+}
+
+.card-big.rank9 div::before,
+.card-big.rank9 div::after,
+.card-tiny.rank9 div::before,
+.card-small.rank9 div::before {
+  content: "9";
+}
+
+.card-big.spades.rank10 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_10.svg");
+}
+
+.card-big.rank10 div::before,
+.card-big.rank10 div::after,
+.card-tiny.rank10 div::before,
+.card-small.rank10 div::before {
+  content: "10";
+}
+
+.card-big.spades.rank11 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_11.svg");
+}
+
+.card-big.rank11 div::before,
+.card-big.rank11 div::after,
+.card-tiny.rank11 div::before,
+.card-small.rank11 div::before {
+  content: "J";
+}
+
+.card-big.spades.rank12 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_12.svg");
+}
+
+.card-big.rank12 div::before,
+.card-big.rank12 div::after,
+.card-tiny.rank12 div::before,
+.card-small.rank12 div::before {
+  content: "Q";
+}
+
+.card-big.spades.rank13 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/0_13.svg");
+}
+
+.card-big.rank13 div::before,
+.card-big.rank13 div::after,
+.card-tiny.rank13 div::before,
+.card-small.rank13 div::before {
+  content: "K";
+}
+
+.card-big.hearts.rank1 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_1.svg");
+}
+
+.card-big.rank1 div::before,
+.card-big.rank1 div::after,
+.card-tiny.rank1 div::before,
+.card-small.rank1 div::before {
+  content: "A";
+}
+
+.card-big.hearts.rank2 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_2.svg");
+}
+
+.card-big.rank2 div::before,
+.card-big.rank2 div::after,
+.card-tiny.rank2 div::before,
+.card-small.rank2 div::before {
+  content: "2";
+}
+
+.card-big.hearts.rank3 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_3.svg");
+}
+
+.card-big.rank3 div::before,
+.card-big.rank3 div::after,
+.card-tiny.rank3 div::before,
+.card-small.rank3 div::before {
+  content: "3";
+}
+
+.card-big.hearts.rank4 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_4.svg");
+}
+
+.card-big.rank4 div::before,
+.card-big.rank4 div::after,
+.card-tiny.rank4 div::before,
+.card-small.rank4 div::before {
+  content: "4";
+}
+
+.card-big.hearts.rank5 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_5.svg");
+}
+
+.card-big.rank5 div::before,
+.card-big.rank5 div::after,
+.card-tiny.rank5 div::before,
+.card-small.rank5 div::before {
+  content: "5";
+}
+
+.card-big.hearts.rank6 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_6.svg");
+}
+
+.card-big.rank6 div::before,
+.card-big.rank6 div::after,
+.card-tiny.rank6 div::before,
+.card-small.rank6 div::before {
+  content: "6";
+}
+
+.card-big.hearts.rank7 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_7.svg");
+}
+
+.card-big.rank7 div::before,
+.card-big.rank7 div::after,
+.card-tiny.rank7 div::before,
+.card-small.rank7 div::before {
+  content: "7";
+}
+
+.card-big.hearts.rank8 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_8.svg");
+}
+
+.card-big.rank8 div::before,
+.card-big.rank8 div::after,
+.card-tiny.rank8 div::before,
+.card-small.rank8 div::before {
+  content: "8";
+}
+
+.card-big.hearts.rank9 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_9.svg");
+}
+
+.card-big.rank9 div::before,
+.card-big.rank9 div::after,
+.card-tiny.rank9 div::before,
+.card-small.rank9 div::before {
+  content: "9";
+}
+
+.card-big.hearts.rank10 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_10.svg");
+}
+
+.card-big.rank10 div::before,
+.card-big.rank10 div::after,
+.card-tiny.rank10 div::before,
+.card-small.rank10 div::before {
+  content: "10";
+}
+
+.card-big.hearts.rank11 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_11.svg");
+}
+
+.card-big.rank11 div::before,
+.card-big.rank11 div::after,
+.card-tiny.rank11 div::before,
+.card-small.rank11 div::before {
+  content: "J";
+}
+
+.card-big.hearts.rank12 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_12.svg");
+}
+
+.card-big.rank12 div::before,
+.card-big.rank12 div::after,
+.card-tiny.rank12 div::before,
+.card-small.rank12 div::before {
+  content: "Q";
+}
+
+.card-big.hearts.rank13 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/1_13.svg");
+}
+
+.card-big.rank13 div::before,
+.card-big.rank13 div::after,
+.card-tiny.rank13 div::before,
+.card-small.rank13 div::before {
+  content: "K";
+}
+
+.card-big.clubs.rank1 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_1.svg");
+}
+
+.card-big.rank1 div::before,
+.card-big.rank1 div::after,
+.card-tiny.rank1 div::before,
+.card-small.rank1 div::before {
+  content: "A";
+}
+
+.card-big.clubs.rank2 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_2.svg");
+}
+
+.card-big.rank2 div::before,
+.card-big.rank2 div::after,
+.card-tiny.rank2 div::before,
+.card-small.rank2 div::before {
+  content: "2";
+}
+
+.card-big.clubs.rank3 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_3.svg");
+}
+
+.card-big.rank3 div::before,
+.card-big.rank3 div::after,
+.card-tiny.rank3 div::before,
+.card-small.rank3 div::before {
+  content: "3";
+}
+
+.card-big.clubs.rank4 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_4.svg");
+}
+
+.card-big.rank4 div::before,
+.card-big.rank4 div::after,
+.card-tiny.rank4 div::before,
+.card-small.rank4 div::before {
+  content: "4";
+}
+
+.card-big.clubs.rank5 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_5.svg");
+}
+
+.card-big.rank5 div::before,
+.card-big.rank5 div::after,
+.card-tiny.rank5 div::before,
+.card-small.rank5 div::before {
+  content: "5";
+}
+
+.card-big.clubs.rank6 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_6.svg");
+}
+
+.card-big.rank6 div::before,
+.card-big.rank6 div::after,
+.card-tiny.rank6 div::before,
+.card-small.rank6 div::before {
+  content: "6";
+}
+
+.card-big.clubs.rank7 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_7.svg");
+}
+
+.card-big.rank7 div::before,
+.card-big.rank7 div::after,
+.card-tiny.rank7 div::before,
+.card-small.rank7 div::before {
+  content: "7";
+}
+
+.card-big.clubs.rank8 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_8.svg");
+}
+
+.card-big.rank8 div::before,
+.card-big.rank8 div::after,
+.card-tiny.rank8 div::before,
+.card-small.rank8 div::before {
+  content: "8";
+}
+
+.card-big.clubs.rank9 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_9.svg");
+}
+
+.card-big.rank9 div::before,
+.card-big.rank9 div::after,
+.card-tiny.rank9 div::before,
+.card-small.rank9 div::before {
+  content: "9";
+}
+
+.card-big.clubs.rank10 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_10.svg");
+}
+
+.card-big.rank10 div::before,
+.card-big.rank10 div::after,
+.card-tiny.rank10 div::before,
+.card-small.rank10 div::before {
+  content: "10";
+}
+
+.card-big.clubs.rank11 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_11.svg");
+}
+
+.card-big.rank11 div::before,
+.card-big.rank11 div::after,
+.card-tiny.rank11 div::before,
+.card-small.rank11 div::before {
+  content: "J";
+}
+
+.card-big.clubs.rank12 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_12.svg");
+}
+
+.card-big.rank12 div::before,
+.card-big.rank12 div::after,
+.card-tiny.rank12 div::before,
+.card-small.rank12 div::before {
+  content: "Q";
+}
+
+.card-big.clubs.rank13 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/2_13.svg");
+}
+
+.card-big.rank13 div::before,
+.card-big.rank13 div::after,
+.card-tiny.rank13 div::before,
+.card-small.rank13 div::before {
+  content: "K";
+}
+
+.card-big.diamonds.rank1 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_1.svg");
+}
+
+.card-big.rank1 div::before,
+.card-big.rank1 div::after,
+.card-tiny.rank1 div::before,
+.card-small.rank1 div::before {
+  content: "A";
+}
+
+.card-big.diamonds.rank2 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_2.svg");
+}
+
+.card-big.rank2 div::before,
+.card-big.rank2 div::after,
+.card-tiny.rank2 div::before,
+.card-small.rank2 div::before {
+  content: "2";
+}
+
+.card-big.diamonds.rank3 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_3.svg");
+}
+
+.card-big.rank3 div::before,
+.card-big.rank3 div::after,
+.card-tiny.rank3 div::before,
+.card-small.rank3 div::before {
+  content: "3";
+}
+
+.card-big.diamonds.rank4 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_4.svg");
+}
+
+.card-big.rank4 div::before,
+.card-big.rank4 div::after,
+.card-tiny.rank4 div::before,
+.card-small.rank4 div::before {
+  content: "4";
+}
+
+.card-big.diamonds.rank5 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_5.svg");
+}
+
+.card-big.rank5 div::before,
+.card-big.rank5 div::after,
+.card-tiny.rank5 div::before,
+.card-small.rank5 div::before {
+  content: "5";
+}
+
+.card-big.diamonds.rank6 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_6.svg");
+}
+
+.card-big.rank6 div::before,
+.card-big.rank6 div::after,
+.card-tiny.rank6 div::before,
+.card-small.rank6 div::before {
+  content: "6";
+}
+
+.card-big.diamonds.rank7 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_7.svg");
+}
+
+.card-big.rank7 div::before,
+.card-big.rank7 div::after,
+.card-tiny.rank7 div::before,
+.card-small.rank7 div::before {
+  content: "7";
+}
+
+.card-big.diamonds.rank8 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_8.svg");
+}
+
+.card-big.rank8 div::before,
+.card-big.rank8 div::after,
+.card-tiny.rank8 div::before,
+.card-small.rank8 div::before {
+  content: "8";
+}
+
+.card-big.diamonds.rank9 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_9.svg");
+}
+
+.card-big.rank9 div::before,
+.card-big.rank9 div::after,
+.card-tiny.rank9 div::before,
+.card-small.rank9 div::before {
+  content: "9";
+}
+
+.card-big.diamonds.rank10 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_10.svg");
+}
+
+.card-big.rank10 div::before,
+.card-big.rank10 div::after,
+.card-tiny.rank10 div::before,
+.card-small.rank10 div::before {
+  content: "10";
+}
+
+.card-big.diamonds.rank11 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_11.svg");
+}
+
+.card-big.rank11 div::before,
+.card-big.rank11 div::after,
+.card-tiny.rank11 div::before,
+.card-small.rank11 div::before {
+  content: "J";
+}
+
+.card-big.diamonds.rank12 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_12.svg");
+}
+
+.card-big.rank12 div::before,
+.card-big.rank12 div::after,
+.card-tiny.rank12 div::before,
+.card-small.rank12 div::before {
+  content: "Q";
+}
+
+.card-big.diamonds.rank13 div {
+  background-image: url("http://iconcept.bg/games/poker/img/deck/3_13.svg");
+}
+
+.card-big.rank13 div::before,
+.card-big.rank13 div::after,
+.card-tiny.rank13 div::before,
+.card-small.rank13 div::before {
+  content: "K";
+}

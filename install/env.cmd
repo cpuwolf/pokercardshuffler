@@ -7,7 +7,7 @@ set PATH=%PYROOT%;%PYROOT%\Scripts;%PATH%;
 set MYROOT=%~dp0..\
 pushd %MYROOT%
 
-pip.exe install -U pywebview
+::pip.exe install -U pywebview
 ::python.exe -m pip install --upgrade pip
 ::pip.exe install -U appdirs
 ::pip.exe install python-evtx

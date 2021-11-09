@@ -22,5 +22,5 @@ import logging.handlers
 import errno
 import webview
 
-window = webview.create_window('Woah dude!', 'https://pywebview.flowrl.com')
+window = webview.create_window('cpuwolf@gmail.com', 'pokerrandom/index.html')
 webview.start()
