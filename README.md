@@ -1,5 +1,7 @@
 # PyCommand
 
+![pokercards](pokercards.gif)
+
 redirect shell command output stdout stderr to Qt GUI QTextBrowser
 
 designed by 2018 Wei Shuai <cpuwolf@gmail.com>
